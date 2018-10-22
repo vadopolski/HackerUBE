@@ -22,11 +22,12 @@ public class GetDoublicateChar {
 
             i--;
         }
-
-        return null;
+    
+        return String.valueOf(inputString.charAt(inputString.length() - 1));
     }
 
     public static void main(String[] args) {
+        System.out.println(getStringWithDoublicateChar2(new StringBuilder("tegppatta"), 1));
         System.out.println(getStringWithDoublicateChar2(new StringBuilder("tegppatta"), 2));
     }
 }
