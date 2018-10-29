@@ -27,7 +27,7 @@ public class PerfectNumber {
         return result;
     }
     
-    public static boolean isPrime(long number) {
+    public static boolean isPerfect(long number) {
         long devider = number / 2 + 1;
         Set<Long> deviders = new HashSet<>();
         
@@ -50,7 +50,7 @@ public class PerfectNumber {
     
     public static void main(String[] args) {
         for(Long testNumber : getArrayWithCandidateFromPrimes(20)){
-            if (isPrime(testNumber)){
+            if (isPerfect(testNumber)){
                 System.out.println(testNumber);
             }
         }
