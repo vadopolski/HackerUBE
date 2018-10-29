@@ -8,12 +8,12 @@ public interface Addition {
 
         if (result > Integer.MAX_VALUE) {
             finalResult = (int) (result - Integer.MAX_VALUE);
-            System.out.println("The result is more than max int value (" + Integer.MAX_VALUE  + ") and modified to 0 plus difference = " + finalResult);
-        } else if (result < Integer.MIN_VALUE){
-            finalResult = (int)(result - Integer.MIN_VALUE);
-            System.out.println("The result is less than min int value (" + Integer.MIN_VALUE + ") and modified to 0 plus difference = " + finalResult);
+            throw new ResultMoreThanMaxValueException(finalResult);
+        } else if (result < Integer.MIN_VALUE) {
+            finalResult = (int) (result - Integer.MIN_VALUE);
+            throw new ResultLessThanMinValueException(finalResult);
         } else {
-            finalResult = (int)result;
+            finalResult = (int) result;
         }
 
         return finalResult;
