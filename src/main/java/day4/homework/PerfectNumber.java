@@ -7,13 +7,13 @@ import java.util.Set;
 
 public class PerfectNumber {
     
-    
-    
-    
     public static List<Long> getArrayWithCandidateFromPrimes(int maxPrimeNumber) {
         List<Long> result = new ArrayList<>();
         
         for (int number = 1; number < maxPrimeNumber; number++){
+            
+            if (number == 2)
+                result.add((long)(Math.pow(2, number - 1) * (Math.pow(2, number) - 1)));
             
             for (int check = 2; check < number; ++check) {
                 if (number % check == 0) {
