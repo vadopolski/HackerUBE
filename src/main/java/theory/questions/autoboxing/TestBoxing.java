@@ -18,7 +18,6 @@ public class TestBoxing {
         numbers.remove(new Integer(5));
         System.out.println(numbers);
         
-        
 //        equals problem
         Long l = 0L;
         System.out.println(l.equals(0L));
@@ -28,7 +27,6 @@ public class TestBoxing {
         
 //       hides the object creation, which can lead to a big performance loss
 //        ‘counter++’ equals Integer.valueOf(counter.intValue() + 1)
-        
         Integer counter = 0;
         for(int i=0; i < 1000; i++) {
             counter++;
@@ -37,14 +35,11 @@ public class TestBoxing {
         Integer ll = 0;
         fubar(ll);
     
-        // NPE when converting null to wrapper class
-        
+// NPE when converting null to wrapper class
         HashMap<String, Integer> map = new HashMap<>();
-    
         Integer hello = map.get("hello");
     
         System.out.println(hello);
-        
         int hello2 = map.get("hello");
     }
     
