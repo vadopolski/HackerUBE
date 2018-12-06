@@ -1,6 +1,7 @@
 package theory.questions.cats;
 
-import org.hamcrest.core.Is;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,32 +15,34 @@ public class CatTest {
     
     @Before
     public void setUp() throws Exception {
-        marsik = new Cat("Marsik", 8);
-        belka = new Cat("Belka", 5);
-        belka2 = new Cat("Belka", 5);
+        marsik = new Cat("Marsik", 8, "white");
+        
+        List<Cat> belkaKittens = new ArrayList<>();
+        belkaKittens.add(new Cat("Chizik", 0, "Yellow"));
+        belkaKittens.add(new Cat("Chizik", 0, "Yellow"));
+        belkaKittens.add(new Cat("Tom", 0, "Grey"));
     
-        belka.addKittens(new Cat("Marusja", 0));
-        belka.addKittens(new Cat("Chizik", 0));
-        belka.addKittens(new Cat("Tom", 0));
+        belka = new Cat("Belka", 5, "black", belkaKittens);
     
-        belka2.addKittens(new Cat("Cat", 0));
-        belka2.addKittens(new Cat("Grey", 0));
-        belka2.addKittens(new Cat("Mark", 0));
+        List<Cat> belkaKittens2 = new ArrayList<>();
+        belkaKittens2.add(new Cat("Cat", 0, "White"));
+        belkaKittens2.add(new Cat("Grey", 0, "Red"));
+        belkaKittens2.add(new Cat("Mark", 0, "Black"));
+        
+        belka2 = new Cat("Belka", 5, "black", belkaKittens2);
     }
     
     @Test
-    public void testEquals_differentCat_false() throws IllegalAccessException {
-    
+    public void testEquals_differentCat_false() {
         assertFalse(belka.equals(belka2));
         assertTrue(belka.equals(belka));
         assertFalse(belka.equals(marsik));
     }
     
     @Test
-    public void testHashCode_differentCat_differentHash() throws IllegalAccessException {
+    public void testHashCode_differentCat_differentHash() {
         assertNotEquals(belka.hashCode(), belka2.hashCode());
         assertEquals(belka.hashCode(), belka.hashCode());
         assertNotEquals(belka.hashCode(), belka2.hashCode());
-        
     }
 }

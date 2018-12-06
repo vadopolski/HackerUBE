@@ -1,18 +1,33 @@
 package theory.questions.cats;
 
+import com.sun.nio.sctp.IllegalReceiveException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public final class Cat {
     private final String name;
-    private int age;
-    private List<Cat> kittens;
+    private final int age;
+    private final String color;
+    private final List<Cat> kittens;
     
-    public Cat(String name, int age) throws IllegalAccessException {
+    public Cat(String name, int age, String color) throws IllegalAccessException {
         if (name == null || name == "") throw new IllegalArgumentException();
         this.name = name;
         this.age = age;
+        this.color = color;
+        this.kittens = new ArrayList<>();
+    }
+
+    public Cat(String name, int age, String color, List<Cat> kittens) throws IllegalAccessException {
+        if (name == null || name == "") throw new IllegalArgumentException(name);
+        this.name = name;
+        if (age < 0) throw new IllegalArgumentException(String.valueOf(age));
+        this.age = age;
+        if (color == null || name == "") throw new IllegalArgumentException(color);
+        this.color = color;
+        if (kittens == null) throw new IllegalArgumentException();
+        this.kittens = new ArrayList<>(kittens);
     }
     
     public String getName() {
@@ -23,29 +38,25 @@ public final class Cat {
         return age;
     }
     
-    public void setAge(int age) {
-        this.age = age;
+    public String getColor() { return color; }
+    
+    public int getKittensCount(){
+        return kittens.size();
     }
     
-    public List<Cat> getKittens() {
-        return kittens;
-    }
-    
-    public void addKittens(final Cat kitten) {
-        if (kitten.age != 0) throw new IllegalArgumentException();
-        if (kittens == null) kittens = new ArrayList<>();
-        kittens.add(kitten);
+    public Cat getKitten(int i){
+        return kittens.get(i);
     }
     
     @Override public int hashCode() {
-        int result = age + 7 * name.hashCode();
+        int result = age + 7 * (name.hashCode() + color.hashCode());
         
-        if (kittens.size() == 0 || kittens == null)
+        if (kittens.size() == 0)
             return result;
         
         int hashForKittens = 1;
         for (Cat cat : kittens)
-            hashForKittens = hashForKittens * 7 + cat.name.hashCode();
+            hashForKittens = hashForKittens * 7 + cat.name.hashCode() + cat.color.hashCode();
         
         return result + hashForKittens;
     }
@@ -59,6 +70,9 @@ public final class Cat {
             return false;
         
         if (age != cat.age)
+            return false;
+        
+        if(color != cat.color)
             return false;
         
         if ((kittens == null || kittens.size() == 0) && (cat.kittens == null || cat.kittens.size() == 0))
