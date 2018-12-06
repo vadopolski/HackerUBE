@@ -14,7 +14,7 @@ public class CatsComparator implements Comparator<Cat> {
         if (colorResult != 0)
             return colorResult;
         
-        int ageResult = c1.getAge() - c1.getAge();
+        int ageResult = c1.getAge() - c2.getAge();
         
         if (ageResult != 0)
             return ageResult;

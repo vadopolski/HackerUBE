@@ -1,6 +1,5 @@
 package theory.questions.cats;
 
-import com.sun.nio.sctp.IllegalReceiveException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
