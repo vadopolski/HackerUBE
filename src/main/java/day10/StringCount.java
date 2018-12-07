@@ -29,7 +29,6 @@ public class StringCount extends RecursiveTask<Map<Character, Integer>> {
             int center = currentSize / 2;
             int leftEnd = startPos + center;
             StringCount leftSum = new StringCount(values, startPos, leftEnd);
-            
             leftSum.fork();
             int rightStart = startPos + center;
             StringCount rightSum = new StringCount(values, rightStart, endPos);
@@ -45,17 +44,16 @@ public class StringCount extends RecursiveTask<Map<Character, Integer>> {
     }
     
     private Map<Character, Integer> computeSum() {
-        
         Map<Character, Integer> map = new HashMap<>();
         for (int i = startPos; i < endPos; i++) {
+            if (values[i] == null) break;
             for (int j = 0; j < values[i].length(); j++) {
-                Character c = values[i].charAt(j);
-                if (!map.containsKey(c))
-                    map.put(c, 0);
+                Character c = values[i].toLowerCase().charAt(j);
+                if (!map.containsKey(c)) map.put(c, 0);
                 map.put(c, map.get(c) + 1);
             }
         }
-        
+        if (map.size() == 0)map.put(' ', 0);
         return map;
     }
     
