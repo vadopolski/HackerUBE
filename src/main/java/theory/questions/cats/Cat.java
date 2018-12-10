@@ -39,13 +39,7 @@ public final class Cat {
     
     public String getColor() { return color; }
     
-    public int getKittensCount(){
-        return kittens.size();
-    }
-    
-    public Cat getKitten(int i){
-        return kittens.get(i);
-    }
+    public List<Cat> getKittens() { return new ArrayList<>(kittens); }
     
     @Override public int hashCode() {
         int result = age + 7 * (name.hashCode() + color.hashCode());
