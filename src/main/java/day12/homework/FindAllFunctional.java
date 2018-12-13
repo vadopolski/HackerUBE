@@ -11,9 +11,9 @@ public class FindAllFunctional {
     public static void main(String[] args) {
         IntStream ints = IntStream.rangeClosed(100, 999);
         ints
-            .filter(e -> (e - getNumberSquareFromAbc(e, 0)
-                            - getNumberSquareFromAbc(e, 1)
-                            - getNumberSquareFromAbc(e, 2)) % 11 == 0)
+            .filter(e -> (e % 11 == getNumberSquareFromAbc(e, 0) +
+                                    getNumberSquareFromAbc(e, 1) +
+                                    getNumberSquareFromAbc(e, 2)))
             .forEach(System.out::println);
         
     }

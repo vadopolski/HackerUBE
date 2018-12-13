@@ -7,8 +7,7 @@ public class FindAllMagicNumber {
             for (int b = 0; b <= 9; b++) {
                 for (int c = 0; c <= 9; c++) {
                     Integer abcInt = Integer.valueOf(String.valueOf(a) + String.valueOf(b) + String.valueOf(c));
-                    int other = abcInt - a * a - b * b - c * c;
-                    if (other % 11 == 0)
+                    if (abcInt % 11 == a*a + b*b + c*c)
                         System.out.println("abc = " + abcInt);
                 }
             }
