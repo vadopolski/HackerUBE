@@ -19,6 +19,6 @@ public class CatsComparator implements Comparator<Cat> {
         if (ageResult != 0)
             return ageResult;
         
-        return c1.getKittensCount() - c2.getKittensCount();
+        return c1.getKittens().size() - c2.getKittens().size();
     }
 }
