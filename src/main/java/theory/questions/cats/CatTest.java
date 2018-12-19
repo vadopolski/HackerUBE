@@ -5,7 +5,11 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+
 
 public class CatTest {
     
@@ -21,14 +25,14 @@ public class CatTest {
         belkaKittens.add(new Cat("Chizik", 0, "Yellow"));
         belkaKittens.add(new Cat("Chizik", 0, "Yellow"));
         belkaKittens.add(new Cat("Tom", 0, "Grey"));
-    
+
         belka = new Cat("Belka", 5, "black", belkaKittens);
-    
+
         List<Cat> belkaKittens2 = new ArrayList<>();
         belkaKittens2.add(new Cat("Cat", 0, "White"));
         belkaKittens2.add(new Cat("Grey", 0, "Red"));
         belkaKittens2.add(new Cat("Mark", 0, "Black"));
-        
+
         belka2 = new Cat("Belka", 5, "black", belkaKittens2);
     }
     

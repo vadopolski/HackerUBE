@@ -82,4 +82,8 @@ public final class Cat {
         
         return kittens.equals(cat.kittens);
     }
+
+    public static void main(String[] args) {
+
+    }
 }

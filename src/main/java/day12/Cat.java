@@ -23,8 +23,6 @@ public class Cat {
 
         System.out.println(cat.name);
 
-
-
         Optional<Cat> optionalCat = Optional.of(cat);
 
         optionalCat.get().setName("NewMars");
