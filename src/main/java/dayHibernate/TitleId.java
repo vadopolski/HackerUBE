@@ -8,6 +8,9 @@ import java.util.Objects;
 
 @Embeddable
 public class TitleId implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Column(name = "emp_no")
     private long empNumber;
 

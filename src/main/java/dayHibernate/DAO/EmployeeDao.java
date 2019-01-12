@@ -22,6 +22,7 @@ public class EmployeeDao {
                 Employee employee = (Employee) iterator.next();
                 System.out.print("First Name: " + employee.getFirstName());
                 System.out.print("  Last Name: " + employee.getLastName());
+                System.out.println(" Title: " + employee.getTitles());
             }
             tx.commit();
         } catch (HibernateException e) {

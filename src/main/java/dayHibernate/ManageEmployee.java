@@ -1,6 +1,7 @@
 package dayHibernate;
 
 import dayHibernate.DAO.EmployeeDao;
+import dayHibernate.DAO.TitleDao;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

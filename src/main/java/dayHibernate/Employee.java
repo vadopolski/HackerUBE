@@ -1,19 +1,21 @@
 package dayHibernate;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-@Table(name = "employees")
-public class Employee {
+@Entity(name = "Employee")
+@Table(name = "employees") public class Employee {
 
     @Id
     @Column(name = "emp_no")
     private long empNo;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "emp_no", insertable = false, updatable = false)
-    private Title title;
+    @OneToMany(mappedBy="employee")
+    private List<Title> titles = new ArrayList<>();
+
+    public List<Title> getTitles() { return titles; }
+    public void setTitles(List<Title> titles) { this.titles = titles; }
 
     @Column(name = "birth_date")
     private java.sql.Date birthDate;
@@ -29,27 +31,6 @@ public class Employee {
 
     @Column(name = "hire_date")
     private java.sql.Date hireDate;
-
-    public Employee() {
-    }
-
-    public Employee(long empNo, Title title, Date birthDate, String firstName, String lastName, String gender, Date hireDate) {
-        this.empNo = empNo;
-        this.title = title;
-        this.birthDate = birthDate;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.hireDate = hireDate;
-    }
-
-    public Title getTitle() {
-        return title;
-    }
-
-    public void setTitle(Title title) {
-        this.title = title;
-    }
 
     public long getEmpNo() {
         return empNo;
