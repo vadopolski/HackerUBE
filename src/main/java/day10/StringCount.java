@@ -4,17 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
+import org.junit.Assert;
 
 public class StringCount extends RecursiveTask<Map<Character, Integer>> {
-    private int UNIT_SIZE = 1;
-    private String[] values;
+    private static final int UNIT_SIZE = 1;
+    private final String[] values;
     private int startPos, endPos;
     
-    public StringCount(String[] values) {
+    public StringCount(final String[] values) {
         this(values, 0, values.length);
     }
     
-    public StringCount(String[] values, int startPos, int endPos) {
+    public StringCount(final String[] values, int startPos, int endPos) {
         this.values = values;
         this.startPos = startPos;
         this.endPos = endPos;
@@ -33,7 +34,15 @@ public class StringCount extends RecursiveTask<Map<Character, Integer>> {
             int rightStart = startPos + center;
             StringCount rightSum = new StringCount(values, rightStart, endPos);
             Map<Character, Integer> map = rightSum.compute();
-            Map<Character, Integer> map1 = leftSum.join();
+            Assert.assertNotNull(map);
+            if (!rightSum.isCompletedNormally()) {
+                map = rightSum.computeSum();
+            }
+            Map<Character, Integer> map1 = null;
+            if (!leftSum.isCompletedNormally()) {
+                map1 = leftSum.computeSum();
+            }
+            Assert.assertNotNull(map1);
             for (Character character : map1.keySet()) {
                 if (!map.containsKey(character))
                     map.put(character, 0);
